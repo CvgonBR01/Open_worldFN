@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Lifetime : MonoBehaviour
 {
-    public float time=2;
+    public float time=5;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +14,6 @@ public class Lifetime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(Vector3.forward * Time.deltaTime);
     }
 }

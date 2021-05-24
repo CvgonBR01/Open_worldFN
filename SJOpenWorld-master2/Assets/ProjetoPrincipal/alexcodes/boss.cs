@@ -18,9 +18,8 @@ public class boss : MonoBehaviour
     public float distancetotrigger = 10;
     public float distancetoattack = 3;
     public float ShotFreq;
-    //public GameObject player;
-    public float speed;
-    
+    public GameObject Muzzle;
+
     public Transform spawnPosition;
     Vector3 randomLocation;
     public enum IaState
@@ -32,24 +31,22 @@ public class boss : MonoBehaviour
         Damage,
         Dying,
         Patrol,
-        Debuff,
+        //Debuff,
     }
 
     public IaState currentState;
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 playerPos = new Vector3(target.transform.position.x, target.transform.position.y + 1, 
-                                        target.transform.position.z);
-        transform.rotation = Quaternion.LookRotation(playerPos);
-        InvokeRepeating("Shot", 3, ShotFreq);
+
+        InvokeRepeating("Shot", 1, ShotFreq);
         currentState = IaState.Shot;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        Muzzle.transform.LookAt(target.transform.position);
         if (!GameObject.FindGameObjectWithTag("Minion"))
         {
             Summon();
@@ -80,9 +77,9 @@ public class boss : MonoBehaviour
             case IaState.Patrol:
                 Patrol();
                 break;
-            case IaState.Debuff:
+            /*case IaState.Debuff:
                 Debuff();
-                break;
+                break;*/
         }
 
         anim.SetFloat("Velocity", agent.velocity.magnitude);
@@ -136,11 +133,7 @@ public class boss : MonoBehaviour
     {
         float distance = Vector3.Distance(agent.transform.position, target.transform.position);
         float minAttackDistance = 1.5f;
-      if (distance > minAttackDistance)
-        {     
-            GameObject clone = Instantiate(projetil, target.transform.position, Quaternion.identity);
-            
-        }
+        GameObject clone = Instantiate(projetil, Muzzle.transform.position, Muzzle.transform.rotation);
 
         if (distance < minAttackDistance)
         {
@@ -177,12 +170,12 @@ public class boss : MonoBehaviour
         Destroy(gameObject, 3);
     }
 
-    void Debuff()
+    /*void Debuff()
     {
         agent.isStopped = true;
         anim.SetBool("Attack", false);
         anim.SetBool("Die", true);
         Destroy(gameObject, 3f);
-    }
+    }*/
 
 }

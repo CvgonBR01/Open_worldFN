@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1388228298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1388228299}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1388228299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388228298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 0.81, z: 1.43}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2298879455072832688}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2298879455072407696
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +64,7 @@ Transform:
   m_Children:
   - {fileID: 2298879455072832696}
   - {fileID: 2298879455072832690}
+  - {fileID: 1388228299}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -122,7 +153,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 2298879455758136134}
   target: {fileID: 0}
-  minion: {fileID: 0}
+  minion: {fileID: 1145725931610619569, guid: 753ae29cde91af6498bee38cd7c39af4, type: 3}
+  projetil: {fileID: 3076110161118753512, guid: b507f762b6851ad4db704727b81078fb,
+    type: 3}
   anim: {fileID: 2298879455081898840}
   enemypos: {fileID: 0}
   patrolposition: {x: 0, y: 0, z: 0}
@@ -131,6 +164,8 @@ MonoBehaviour:
   timetowait: 3
   distancetotrigger: 10
   distancetoattack: 3
+  ShotFreq: 10
+  Muzzle: {fileID: 1388228298}
   spawnPosition: {fileID: 0}
   currentState: 0
 --- !u!1 &2298879455072407698
